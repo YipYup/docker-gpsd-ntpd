@@ -1,0 +1,3 @@
+DEVICES="/dev/ttyACM0"
+GPSD_OPTIONS="-bGn"
+GPSD_SOCKET="/var/run/gpsd.sock"
