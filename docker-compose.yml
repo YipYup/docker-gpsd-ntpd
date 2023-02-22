@@ -1,0 +1,10 @@
+version: "3"
+services:
+    gpsd:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        #command: ["/bin/bash", "-c", "exec /usr/sbin/gpsd -N -n -G ${*}","--"]
+        ports:
+            - 2947:2947
+        restart: always
