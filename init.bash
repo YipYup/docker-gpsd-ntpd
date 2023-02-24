@@ -63,3 +63,6 @@ sed -i.orig -e 's/PrivateTmp=true/#PrivateTmp=true/' /lib/systemd/system/ntp.ser
 ###############################################################################
 $(which cp) ${DOCKER_FILES_INTERNAL_SOURCE_DIR}gpsd /etc/default/ || echo "Failed to copy ${DOCKER_FILES_INTERNAL_SOURCE_DIR}gpsd to /etc/default/gpsd" && exit 1
 
+###############################################################################
+# run GPSd
+###############################################################################
