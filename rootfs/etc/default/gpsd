@@ -7,3 +7,6 @@ GPSD_OPTIONS="-bGn"
 
 # Automatically hot add/remove USB GPS devices via gpsdctl
 GPSD_SOCKET="/var/run/gpsd.sock"
+
+# Automatically hot add/remove USB GPS devices via gpsdctl
+USBAUTO="true"
