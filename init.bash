@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 ###############################################################################
+# Setup vars to be used for this init script
+###############################################################################
+declare -rx DOCKER_FILES_INTERNAL_SOURCE_DIR=/usr/docker-src-rootfs/
+export DOCKER_FILES_INTERNAL_SOURCE_DIR
+###############################################################################
 # Backup gpsd default config file
 ###############################################################################
 if [[ -f /etc/default/gpsd ]]; then
