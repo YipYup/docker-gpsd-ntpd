@@ -21,5 +21,5 @@ COPY --chown root:root ./init.bash /init
 # Expose gpsd port tcp://2947
 EXPOSE 2947
 # Launch init when starting container
-ENTRYPOINT ["/usr/bin/bash", "-c", "/init", "--"]
 #ENTRYPOINT ["/bin/sh", "-c", "/sbin/syslogd -S -O - -n & exec /usr/sbin/gpsd -N -n -G ${*}","--"]
+ENTRYPOINT ["/usr/bin/bash", "-c", "/init", "--"]
