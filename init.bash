@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 ###############################################################################
 # Backup gpsd default config file
+###############################################################################
 if [[ -f /etc/default/gpsd ]]; then
     echo "gpsd default config file exists..."
     echo "Now checking if backup of default gpsd file exists..."
@@ -15,6 +16,7 @@ else
 fi
 ###############################################################################
 # Backup GPSD socket configuration file
+###############################################################################
 if [[ -f /usr/lib/systemd/system/gpsd.socket ]]; then
     echo "gpsd default config file exists..."
     echo "Now checking if backup of default gpsd file exists..."
@@ -29,9 +31,11 @@ else
 fi
 ###############################################################################
 # Make GPSd listen on any IP address for IPv6 and IPv4
+###############################################################################
 sed -i.orig -e 's/ListenStream\=\[::1\]:2947/ListenStream\=\[::\]:2947/' -e 's/ListenStream\=127.0.0.1:2947/ListenStream\=0.0.0.0:2947/' /usr/lib/systemd/system/gpsd.socket
 ###############################################################################
 # Backup NTPd service file
+###############################################################################
 if [[ -f /lib/systemd/system/ntp.service ]]; then
     echo "ntp default config file exists..."
     echo "Now checking if backup of default gpsd file exists..."
@@ -46,4 +50,5 @@ else
 fi
 ###############################################################################
 # Edit NTPd service file to disable the PrivateTmp file and make it accessible.
+###############################################################################
 sed -i.orig -e 's/PrivateTmp=true/#PrivateTmp=true/' /lib/systemd/system/ntp.service
