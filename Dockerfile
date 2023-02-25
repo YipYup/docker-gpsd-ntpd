@@ -22,4 +22,4 @@ COPY --chown=root:root ./init.bash /init
 EXPOSE 2947
 # Launch init when starting container
 #ENTRYPOINT ["/bin/sh", "-c", "/sbin/syslogd -S -O - -n & exec /usr/sbin/gpsd -N -n -G ${*}","--"]
-ENTRYPOINT ["/usr/bin/bash", "-c", "/init", "--"]
+ENTRYPOINT ["/bin/bash", "-c", "/init", "--"]
