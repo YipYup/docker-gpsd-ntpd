@@ -8,6 +8,6 @@ services:
             - 2947:2947
         restart: always
         entrypoint:
-        - /usr/bin/bash
+        - /bin/bash
         - -c
         - /init
