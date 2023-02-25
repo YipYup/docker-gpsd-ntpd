@@ -15,9 +15,9 @@ apt upgrade -y && \
 apt autoremove -y && \
 apt autoclean
 # Copy in files
-COPY --chown root:root ./rootfs/ /usr/docker-src-rootfs/
+COPY --chown=root:root ./rootfs/ /usr/docker-src-rootfs/
 # Copy init script in
-COPY --chown root:root ./init.bash /init
+COPY --chown=root:root ./init.bash /init
 # Expose gpsd port tcp://2947
 EXPOSE 2947
 # Launch init when starting container
