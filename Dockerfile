@@ -18,6 +18,7 @@ apt autoclean
 COPY --chown=root:root ./rootfs/ /usr/docker-src-rootfs/
 # Copy init script in
 COPY --chown=root:root ./init.bash /init
+RUN chmod 755 /init
 # Expose gpsd port tcp://2947
 EXPOSE 2947
 # Launch init when starting container
