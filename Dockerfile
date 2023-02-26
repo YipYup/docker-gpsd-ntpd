@@ -10,6 +10,7 @@ gpsd \
 gpsd-clients \
 ntp \
 ntpdate \
+tzdata \
 -y && \
 apt upgrade -y && \
 apt autoremove -y && \
