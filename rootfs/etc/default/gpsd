@@ -5,7 +5,6 @@
 # support the GPS device with ttyACM0
 DEVICES="/dev/ttyACM0"
 
-
 # Other options you want to pass to gpsd
 GPSD_OPTIONS="-bGn"
 
