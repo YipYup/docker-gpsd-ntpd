@@ -1,7 +1,10 @@
 # Devices gpsd should connect to at boot time.
 # They need to be read/writeable, either by user gpsd or the group dialout.
+#DEVICES="/dev/ttyAMA0" # former method of hijacking serial interface on RPi#
+# to talk to GPS module. No longer needed with newer kernels, which natively
+# support the GPS device with ttyACM0
 DEVICES="/dev/ttyACM0"
-#DEVICES="/dev/ttyAMA0"
+
 
 # Other options you want to pass to gpsd
 GPSD_OPTIONS="-bGn"
