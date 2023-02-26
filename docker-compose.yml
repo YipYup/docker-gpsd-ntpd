@@ -1,6 +1,7 @@
 version: "3"
 services:
     gpsd:
+        tty: true
         build:
             context: .
             dockerfile: Dockerfile
