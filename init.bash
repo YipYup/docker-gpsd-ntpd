@@ -11,3 +11,6 @@ cp ${DOCKER_FILES_INTERNAL_SOURCE_DIR}usr/lib/systemd/system/gpsd.socket /usr/li
 # copy files needed for NTP
 cp ${DOCKER_FILES_INTERNAL_SOURCE_DIR}etc/ntp.conf /etc/ntp.conf
 cp ${DOCKER_FILES_INTERNAL_SOURCE_DIR}lib/systemd/system/ntp.service
+# Copy files for DHCP client that is prepending our NTP configuration
+cp ${DOCKER_FILES_INTERNAL_SOURCE_DIR}etc/systemd/network/10-eth0.network /etc/systemd/network/10-eth0.network
+cp ${DOCKER_FILES_INTERNAL_SOURCE_DIR}etc/systemd/network/10-wlan0.network /etc/systemd/network/10-wlan0.network
