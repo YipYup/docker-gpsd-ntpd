@@ -11,3 +11,5 @@ services:
         - /bin/bash
         - -c
         - /init
+        volumes:
+            - ./vol/docker-gpsd/var/lib/ntp/:/var/lib/ntp/
