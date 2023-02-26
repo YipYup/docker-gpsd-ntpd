@@ -1,0 +1,11 @@
+[Match]
+Name=*
+
+[Network]
+DHCP=yes
+
+[DHCPv4]
+UseNTP=no
+
+[DHCPv6]
+UseNTP=no
