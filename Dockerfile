@@ -15,7 +15,11 @@ tzdata \
 -y && \
 apt upgrade -y && \
 apt autoremove -y && \
-apt autoclean
+apt autoclean && \
+systemctl stop ntp && \
+systemctl stop gpsd && \
+systemctl disable ntp && \
+systemctl disable gpsd && \
 # Copy in files
 COPY --chown=root:root ./rootfs/ /
 # Expose gpsd port tcp://2947
