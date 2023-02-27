@@ -14,5 +14,6 @@
 exec /usr/sbin/ntpd \
 -c /etc/ntp.conf \
 -f /var/lib/ntp/ntp.drift \
--n 2>&1 | \
+-n \
+2>&1 | \
     stdbuf -oL awk '{print "[" strftime("%Y/%m/%d %H:%M:%S", systime()) "][ntpd] " $0}'
