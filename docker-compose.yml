@@ -6,6 +6,7 @@ services:
     container_name: gpsd
     hostname: gpsd
     tty: true
+    privileged: true
     build:
       context: .
       dockerfile: Dockerfile
