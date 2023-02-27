@@ -3,16 +3,16 @@
 #DEVICES="/dev/ttyAMA0" # former method of hijacking serial interface on RPi#
 # to talk to GPS module. No longer needed with newer kernels, which natively
 # support the GPS device with ttyACM0
-DEVICES="/dev/ttyACM0"
+#DEVICES="/dev/ttyACM0"
 
 # Other options you want to pass to gpsd
-GPSD_OPTIONS="-bGn"
+#GPSD_OPTIONS="-bGn"
 
 # GPSd socket location
-GPSD_SOCKET="/var/run/gpsd.sock"
+#GPSD_SOCKET="/var/run/gpsd.sock"
 
 # Automatically hot add/remove USB GPS devices via gpsdctl
 USBAUTO="false"
 
 # Start the gpsd daemon automatically at boot time
-START_DAEMON="true"
+#START_DAEMON="true"
