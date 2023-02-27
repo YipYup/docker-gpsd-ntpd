@@ -1,6 +1,7 @@
 #!/usr/bin/with-contenv bash
 #shellcheck shell=bash disable=SC2016
 
+# Documentation: https://linux.die.net/man/8/ntpd
 #
 #ENVIRONMENT
 #     See OPTION PRESETS for configuration environment variables.
