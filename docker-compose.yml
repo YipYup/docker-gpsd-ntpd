@@ -10,6 +10,8 @@ services:
     ports:
       - 2947:2947
     restart: always
+    devices:
+      - /dev/bus/usb:/dev/bus/usb
     entrypoint:
     - /bin/bash
     - -c
