@@ -1,2 +1,2 @@
 # docker-gpsd
-GPSd inside docker
+GPSd and NTPd inside of docker
