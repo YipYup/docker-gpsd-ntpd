@@ -11,9 +11,7 @@
 #     /etc/ntp.keys   the default name of the key file
 #
 exec /usr/sbin/ntpd \
---conffile /etc/ntp.conf \
---driftfile /var/lib/ntp/ntp.drift \
+-c /etc/ntp.conf \
+-f /var/lib/ntp/ntp.drift \
 -n 2>&1 | \
     stdbuf -oL awk '{print "[" strftime("%Y/%m/%d %H:%M:%S", systime()) "][ntpd] " $0}'
-
-    
