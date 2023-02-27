@@ -1,9 +1,8 @@
 #!/usr/bin/with-contenv bash
 #shellcheck shell=bash disable=SC2016
 
-# CHECK PATH
-# FIX SYNTAX TO SPECIFY CONF FILES!
-gpsd /dev/ttyACM0 \
+# Documentation at https://gpsd.gitlab.io/gpsd/gpsd.html
+/usr/sbin/gpsd /dev/ttyACM0 \
 --badtime \
 --debug 1 \
 --foreground \
