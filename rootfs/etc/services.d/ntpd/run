@@ -10,7 +10,7 @@
 #     /etc/ntp.drift  the default name of the drift file
 #     /etc/ntp.keys   the default name of the key file
 #
-/usr/sbin/ntpd \
+exec /usr/sbin/ntpd \
 --conffile /etc/ntp.conf \
 --driftfile /var/lib/ntp/ntp.drift \
 -n 2>&1 | \
