@@ -11,7 +11,8 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 2947:2947
+      - "2947:2947/tcp"
+      - "123:123/udp"
     restart: always
     devices:
       - /dev/bus/usb:/dev/bus/usb
