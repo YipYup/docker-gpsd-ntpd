@@ -1,5 +1,6 @@
 #FROM ghcr.io/sdr-enthusiasts/docker-baseimage:qemu
 #FROM ghcr.io/serversideup/s6-overlay:ubuntu-22.04-v2.0.4
+ARG S6_OVERLAY_VERSION=3.1.4.1
 FROM serversideup/s6-overlay:ubuntu-22.04-v2.0.4
 RUN bash -c 'declare -rx DEBIAN_FRONTEND=noninteractive && \
 declare -rx NEEDRESTART_MODE=a && \
