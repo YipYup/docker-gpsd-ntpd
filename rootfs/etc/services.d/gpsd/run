@@ -12,5 +12,3 @@
 --readonly \
 --sockfile /var/run/gpsd.sock 2>&1 | \
     stdbuf -oL awk '{print "[" strftime("%Y/%m/%d %H:%M:%S", systime()) "][gpsd] " $0}'
-
-    
