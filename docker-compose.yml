@@ -1,5 +1,5 @@
 version: "3"
-  volumes:
+volumes:
     ntp:./vol/docker-gpsd/var/lib/ntp/
 services:
   gpsd:
