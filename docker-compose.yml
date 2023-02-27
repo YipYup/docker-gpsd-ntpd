@@ -3,6 +3,8 @@ volumes:
   ntp:
 services:
   gpsd:
+    container_name: gpsd
+    hostname: gpsd
     tty: true
     build:
       context: .
