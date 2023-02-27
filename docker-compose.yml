@@ -1,6 +1,6 @@
 version: "3"
 volumes:
-    ntp:./vol/docker-gpsd/var/lib/ntp/
+  ntp:
 services:
   gpsd:
     tty: true
@@ -15,4 +15,4 @@ services:
     - -c
     - /init
     volumes:
-      - ./vol/docker-gpsd/var/lib/ntp/:/var/lib/ntp/
+      - ./vol/docker-gpsd/var/lib/ntp:/var/lib/ntp
