@@ -1,6 +1,7 @@
 #FROM ghcr.io/sdr-enthusiasts/docker-baseimage:qemu
-FROM ghcr.io/serversideup/s6-overlay:ubuntu-22.04-v2.0.4
-RUN declare -rx DEBIAN_FRONTEND=noninteractive && \
+#FROM ghcr.io/serversideup/s6-overlay:ubuntu-22.04-v2.0.4
+FROM serversideup/s6-overlay:ubuntu-22.04-v2.0.4
+RUN bash -c 'declare -rx DEBIAN_FRONTEND=noninteractive && \
 declare -rx NEEDRESTART_MODE=a && \
 export DEBIAN_FRONTEND && \
 export NEEDRESTART_MODE && \
