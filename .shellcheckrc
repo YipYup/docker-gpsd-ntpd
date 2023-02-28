@@ -1,0 +1,10 @@
+# Project-wide Shellcheck configuration file
+# https://github.com/koalaman/shellcheck/wiki/Directive
+shell=bash
+#disable=SC2154
+enable=add-default-case
+enable=avoid-nullary-conditions
+enable=check-unassigned-uppercase
+enable=require-variable-braces
+enable=require-variable-braces
+external-sources=true
