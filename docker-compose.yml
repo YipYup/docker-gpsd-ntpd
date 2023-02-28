@@ -22,3 +22,5 @@ services:
     - /init
     volumes:
       - ./vol/docker-gpsd/var/lib/ntp:/var/lib/ntp
+    tmpfs:
+      - /var/log:size=32M
