@@ -18,7 +18,7 @@ CMDLINE+=(--sockfile /var/run/gpsd.sock)
 
 gpsd_cmd="$(echo ${EXEC_CMD} ${GPS_DEVICE} ${CMDLINE[@]} | xargs)"
 
-echo "[$(date})][gpsd] Starting: ${gpsd_cmd}"
+echo "[$(date)][gpsd] Starting: ${gpsd_cmd}"
 
 ${gpsd_cmd} 2>&1 | \
     stdbuf -oL awk '{print "[" strftime("%Y/%m/%d %H:%M:%S", systime()) "][gpsd] " $0}'
