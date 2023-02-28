@@ -15,6 +15,7 @@ available to NTPd in order to be a timeserver to ntpd.
 - NTP overview: https://en.wikipedia.org/wiki/Network_Time_Protocol
 - Understanding NTP reach: https://www.linuxjournal.com/article/6812
 - NTPd Documentation: https://linux.die.net/man/8/ntpd
+- NTP config for GPSd: https://wiki.archlinux.org/title/Network_Time_Protocol_daemon
 
 #### GPSd:
 - GPSd Documentation at https://gpsd.gitlab.io/gpsd/gpsd.html
