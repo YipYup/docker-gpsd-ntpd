@@ -34,6 +34,7 @@ RUN set -x && \
     KEPT_PACKAGES+=(gpsd) && \
     KEPT_PACKAGES+=(gpsd-clients) && \
     KEPT_PACKAGES+=(htop) && \
+    KEPT_PACKAGES+=(man) && \
     KEPT_PACKAGES+=(ntp) && \
     #KEPT_PACKAGES+=(ntp-utils) && \
     KEPT_PACKAGES+=(ntpdate) && \
