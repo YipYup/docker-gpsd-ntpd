@@ -21,6 +21,7 @@ available to NTPd in order to be a timeserver to ntpd.
 - https://www.berthon.eu/2017/a-time-server-in-a-container-part-1/
 - https://www.lammertbies.nl/comm/info/gps-time
 - https://openwrt.org/docs/guide-user/services/ntp/gps
+- https://gpsd.io/gpsd-time-service-howto.html
 
 #### GPSd:
 - GPSd Documentation at https://gpsd.gitlab.io/gpsd/gpsd.html
