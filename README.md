@@ -1,7 +1,8 @@
 # docker-gpsd
 GPSd and NTPd inside of a docker container
 
----
+-----
+
 ## Information:
 
 ### Supported architectures
@@ -11,17 +12,23 @@ GPSd exposes itself on tcp:2947 for use with external
 applications while also making itself available to NTPd in
 order to be a time provider for ntpd.
 
+---
+
 ### Recommended Hardware
 
 #### GPS Modules
 - Better: SparkFun U-Blox NEO-M9N Breakout Board with USB-C and SMA Connector
 - Good: Generic U-Blox 7 USB GNSS receiver
 
+---
+
 ### Thanks to:
 - [kx1t](https://github.com/kx1t) for their assistance with the S6 Overlay service configuration
 - [mikenye](https://github.com/mikenye) for their solid base image used in this build
 - [johnboy00](https://www.rdforum.org/members/12420/) for their assistance and collaboration on the "carputer" project, and for their amazing app, the ultimate driving companion app, [JBV1](https://jbv1.net/)
 - [RADAR Detector Forum](https://www.rdforum.org/) for bringing together a community of passionate civil disobedients.
+
+---
 
 #### Further Reading:
 
