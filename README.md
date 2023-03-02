@@ -54,4 +54,4 @@ order to be a time provider for ntpd.
 Copyright ©️ 2023 [YipYup](https://github.com/YipYup). All rights reserved.
 
 #### License
-
+This project is licensed according to the [GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007](LICENSE.md).
