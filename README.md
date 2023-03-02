@@ -30,9 +30,9 @@ order to be a time provider for ntpd.
 
 ---
 
-#### Further Reading:
+### Further Reading:
 
-##### NTPd:
+#### NTPd:
 - NTP overview: https://en.wikipedia.org/wiki/Network_Time_Protocol
 - Understanding NTP reach: https://www.linuxjournal.com/article/6812
 - NTPd Documentation: https://linux.die.net/man/8/ntpd
@@ -42,6 +42,16 @@ order to be a time provider for ntpd.
 - https://www.lammertbies.nl/comm/info/gps-time
 - https://openwrt.org/docs/guide-user/services/ntp/gps
 
-##### GPSd:
+#### GPSd:
 - GPSd Documentation at https://gpsd.gitlab.io/gpsd/gpsd.html
 - https://gpsd.io/gpsd-time-service-howto.html
+
+---
+
+### License and Copyright
+
+#### Copyright
+Copyright ©️ 2023 [YipYup](https://github.com/YipYup). All rights reserved.
+
+#### License
+
