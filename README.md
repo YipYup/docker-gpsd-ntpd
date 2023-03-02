@@ -1,8 +1,21 @@
 # docker-gpsd
-GPSd and NTPd inside of docker
+GPSd and NTPd inside of a docker container
 
-GPSd exposes itself on 2947, while also making itself
-available to NTPd in order to be a timeserver to ntpd.
+---
+## Information:
+
+### Supported architectures
+This container should build successfully on `amd64`, `armhf`, and `aarch64`.
+
+GPSd exposes itself on tcp:2947 for use with external
+applications while also making itself available to NTPd in
+order to be a time provider for ntpd.
+
+### Recommended Hardware
+
+#### GPS Modules
+- Better: SparkFun U-Blox NEO-M9N Breakout Board with USB-C and SMA Connector
+- Good: Generic U-Blox 7 USB GNSS receiver
 
 ### Thanks to:
 - [kx1t](https://github.com/kx1t) for their assistance with the S6 Overlay service configuration
@@ -10,9 +23,9 @@ available to NTPd in order to be a timeserver to ntpd.
 - [johnboy00](https://www.rdforum.org/members/12420/) for their assistance and collaboration on the "carputer" project, and for their amazing app, the ultimate driving companion app, [JBV1](https://jbv1.net/)
 - [RADAR Detector Forum](https://www.rdforum.org/) for bringing together a community of passionate civil disobedients.
 
-### Information:
+#### Further Reading:
 
-#### NTPd:
+##### NTPd:
 - NTP overview: https://en.wikipedia.org/wiki/Network_Time_Protocol
 - Understanding NTP reach: https://www.linuxjournal.com/article/6812
 - NTPd Documentation: https://linux.die.net/man/8/ntpd
@@ -21,7 +34,7 @@ available to NTPd in order to be a timeserver to ntpd.
 - https://www.berthon.eu/2017/a-time-server-in-a-container-part-1/
 - https://www.lammertbies.nl/comm/info/gps-time
 - https://openwrt.org/docs/guide-user/services/ntp/gps
-- https://gpsd.io/gpsd-time-service-howto.html
 
-#### GPSd:
+##### GPSd:
 - GPSd Documentation at https://gpsd.gitlab.io/gpsd/gpsd.html
+- https://gpsd.io/gpsd-time-service-howto.html
