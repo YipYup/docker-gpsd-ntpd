@@ -16,16 +16,16 @@ RUN set -x && \
     KEPT_PACKAGES+=(pv) && \
     # required for S6 overlay
     # curl kept for healthcheck
-    TEMP_PACKAGES+=(file) && \
-    KEPT_PACKAGES+=(curl) && \
-    TEMP_PACKAGES+=(xz-utils) && \
     KEPT_PACKAGES+=(ca-certificates) && \
+    KEPT_PACKAGES+=(curl) && \
+    TEMP_PACKAGES+=(file) && \
+    TEMP_PACKAGES+=(xz-utils) && \
     # bc for scrips and healthchecks
     KEPT_PACKAGES+=(bc) && \
     # packages for network stuff
-    KEPT_PACKAGES+=(socat) && \
     KEPT_PACKAGES+=(ncat) && \
     KEPT_PACKAGES+=(net-tools) && \
+    KEPT_PACKAGES+=(socat) && \
     KEPT_PACKAGES+=(wget) && \
     # process management
     KEPT_PACKAGES+=(procps) && \
