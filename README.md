@@ -41,6 +41,7 @@ order to be a time provider for ntpd.
 - https://www.berthon.eu/2017/a-time-server-in-a-container-part-1/
 - https://www.lammertbies.nl/comm/info/gps-time
 - https://openwrt.org/docs/guide-user/services/ntp/gps
+- https://www.berthon.eu/2017/a-time-server-in-a-container-part-1/
 
 #### GPSd:
 - GPSd Documentation at https://gpsd.gitlab.io/gpsd/gpsd.html
