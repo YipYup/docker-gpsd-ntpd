@@ -46,6 +46,7 @@ order to be a time provider for ntpd.
 #### GPSd:
 - GPSd Documentation at https://gpsd.gitlab.io/gpsd/gpsd.html
 - https://gpsd.io/gpsd-time-service-howto.html
+- https://lists.gnu.org/archive/html/gpsd-users/2016-06/msg00008.html
 
 ---
 
