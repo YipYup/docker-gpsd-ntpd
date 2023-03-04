@@ -4,7 +4,8 @@
 # Documentation at https://gpsd.gitlab.io/gpsd/gpsd.html
 
 EXEC_CMD="/usr/sbin/gpsd"
-GPS_DEVICE="/dev/ttyACM0"
+#GPS_DEVICE="/dev/ttyACM0"
+GPS_DEVICE="${GPS_DEVICE}"
 
 CMDLINE=()
 CMDLINE+=(--badtime)
