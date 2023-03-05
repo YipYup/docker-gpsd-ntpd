@@ -9,12 +9,12 @@ GPS_DEVICE="${GPS_DEVICE}"
 
 CMDLINE=()
 #CMDLINE+=(--badtime)
-CMDLINE+=(--debug 1)
+CMDLINE+=(--debug 2)
 CMDLINE+=(--foreground)
 CMDLINE+=(--listenany)
 CMDLINE+=(--nowait)
 CMDLINE+=(--port 2947)
-CMDLINE+=(--readonly)
+#CMDLINE+=(--readonly)
 CMDLINE+=(--sockfile /var/run/gpsd.sock)
 
 gpsd_cmd="$(echo ${EXEC_CMD} ${GPS_DEVICE} ${CMDLINE[@]} | xargs)"
