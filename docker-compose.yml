@@ -14,8 +14,13 @@ services:
       - "2947:2947/tcp"
       - "123:123/udp"
     restart: always
+    environment:
+      - GPS_DEVICE=${GPS_DEVICE}
     devices:
-      - /dev/bus/usb:/dev/bus/usb
+      - "/dev/bus/usb:/dev/bus/usb"
+      - "/dev/pps0:/dev/pps0"
+      - "/dev/ttyACM0:/dev/ttyACM0"
+      - "/dev/ttyAMA0:/dev/ttyAMA0"
     entrypoint:
     - /bin/bash
     - -c
