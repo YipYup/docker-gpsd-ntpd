@@ -14,6 +14,12 @@ GPSd exposes itself on tcp:2947 for use with external
 applications while also making itself available to NTPd in
 order to be a time provider for ntpd.
 
+### Running:
+
+Use the docker-compose.yml as standalone or copy the contents into an existing docker-compose.yml file. Be sure to make any adjustments necessary for your enviornment such as adjusting the network configuration, hostname, etc. and etc.
+
+Be sure to edit the `.env` file to set the device parameter to the correct device name for the GPS receiver you are using. An example is provided in `.env.example`.
+
 ### Notes
 
 #### A Word About Log Messages
