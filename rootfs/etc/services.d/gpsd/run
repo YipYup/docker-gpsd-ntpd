@@ -8,9 +8,9 @@ EXEC_CMD="/usr/sbin/gpsd"
 GPS_DEVICE="${GPS_DEVICE}"
 
 CMDLINE=()
-#CMDLINE+=(--badtime)
+CMDLINE+=(--badtime)
 CMDLINE+=(--debug 2)
-#CMDLINE+=(--foreground)
+CMDLINE+=(--foreground)
 CMDLINE+=(--listenany)
 CMDLINE+=(--nowait)
 #CMDLINE+=(--port 2947)
