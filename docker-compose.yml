@@ -1,10 +1,12 @@
 version: "3"
+
 volumes:
-  ntp:
+  gpsdntpd:
+
 services:
   gpsd:
-    container_name: gpsd
-    hostname: gpsd
+    container_name: gpsdntpd
+    hostname: gpsdntpd
     tty: true
     privileged: true
     build:
@@ -21,6 +23,6 @@ services:
     - -c
     - /init
     volumes:
-      - ./vol/docker-gpsd/var/lib/ntp:/var/lib/ntp
+      - ./vol/docker-gpsd-ntpd/var/lib/ntp:/var/lib/ntp
     tmpfs:
       - /var/log:size=32M
