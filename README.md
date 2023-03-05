@@ -1,4 +1,5 @@
 # docker-gpsd
+
 GPSd and NTPd inside of a docker container
 
 -----
@@ -6,23 +7,48 @@ GPSd and NTPd inside of a docker container
 ## Information:
 
 ### Supported architectures
+
 This container should build successfully on `amd64`, `armhf`, and `aarch64`.
 
 GPSd exposes itself on tcp:2947 for use with external
 applications while also making itself available to NTPd in
 order to be a time provider for ntpd.
 
+### Notes
+
+#### A Word About Log Messages
+
+This docker image and the programs GPSd and NTPd are configured with a "most compatible" approach. This means that configurations have
+been adjusted to provide multiple options for connectivity for a variety of GPS devices with many protocols. Subsequently NTPd has been
+configured to use multiple interface types to the various GPSd devices. Since GPS devices and the standards they support vary, it is
+normal and expected that you may see warning and informational messages from the container, complaining that a device wasn't found or
+that a protocol isn't supported on a given device.
+
+For example, the output of `docker logs gpsd` shows this line repeated over and over.
+
+```
+[gpsd] gpsd:WARN: cycle-start detector failed.
+```
+
+This is from a host connected to a VK-162 u-Blox 7 GPS device over GPS.
+The warning message is telling us that GPSd is unable to determine the kPPS timing from the attached GPS device. This is because this device does not provide
+a kPPS compatible output, despite our configuration of the NTP daemon (NTPd) requesting the kPPS signal from GPSd when it connected to GPSd to request a PPS feed.
+
+This message can be ignored, as it is non-fatal. NTPd will fallback and instead attempt to use a different PPS datasource per the configuration of this container, as is designed and intended when the hardware attached is unable to provide it.
+
 ---
 
 ### Recommended Hardware
 
 #### GPS Modules
+
 - Better: SparkFun U-Blox NEO-M9N Breakout Board with USB-C and SMA Connector
 - Good: Generic U-Blox 7 USB GNSS receiver
 
 ---
 
 ### Thanks to:
+
 - [kx1t](https://github.com/kx1t) for their assistance with the S6 Overlay service configuration
 - [mikenye](https://github.com/mikenye) for their solid base image used in this build
 - [johnboy00](https://www.rdforum.org/members/12420/) for their assistance and collaboration on the "carputer" project, and for their amazing app, the ultimate driving companion app, [JBV1](https://jbv1.net/)
@@ -33,6 +59,7 @@ order to be a time provider for ntpd.
 ### Further Reading:
 
 #### NTPd:
+
 - NTP overview: https://en.wikipedia.org/wiki/Network_Time_Protocol
 - Understanding NTP reach: https://www.linuxjournal.com/article/6812
 - NTPd Documentation: https://linux.die.net/man/8/ntpd
@@ -53,7 +80,9 @@ order to be a time provider for ntpd.
 ### License and Copyright
 
 #### Copyright
+
 Copyright ©️ 2023 [YipYup](https://github.com/YipYup). All rights reserved.
 
 #### License
+
 This project is licensed according to the [GNU AFFERO GENERAL PUBLIC LICENSE Version 3, 19 November 2007](LICENSE.md).
