@@ -1,4 +1,4 @@
-# docker-gpsd
+# docker-gpsd-ntpd
 
 GPSd and NTPd inside of a docker container
 
