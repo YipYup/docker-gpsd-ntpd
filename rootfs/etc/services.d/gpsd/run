@@ -8,7 +8,7 @@ EXEC_CMD="/usr/sbin/gpsd"
 GPS_DEVICE="${GPS_DEVICE}"
 
 CMDLINE=()
-CMDLINE+=(--badtime)
+#CMDLINE+=(--badtime)
 CMDLINE+=(--debug 1)
 CMDLINE+=(--foreground)
 CMDLINE+=(--listenany)

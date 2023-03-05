@@ -11,6 +11,7 @@
 #     /etc/ntp.drift  the default name of the drift file
 #     /etc/ntp.keys   the default name of the key file
 #
+sleep 10
 exec /usr/sbin/ntpd \
 -c /etc/ntp.conf \
 -f /var/lib/ntp/ntp.drift \
