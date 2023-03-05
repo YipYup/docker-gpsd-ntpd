@@ -13,7 +13,7 @@ CMDLINE+=(--debug 2)
 CMDLINE+=(--foreground)
 CMDLINE+=(--listenany)
 CMDLINE+=(--nowait)
-CMDLINE+=(--port 2947)
+#CMDLINE+=(--port 2947)
 #CMDLINE+=(--readonly)
 CMDLINE+=(--sockfile /var/run/gpsd.sock)
 
