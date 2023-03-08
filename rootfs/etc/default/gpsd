@@ -14,6 +14,7 @@
 # Automatically hot add/remove USB GPS devices via gpsdctl
 #USBAUTO="false"
 #USBAUTO="true"
+USBAUTO="false"
 
 # Start the gpsd daemon automatically at boot time
 #START_DAEMON="true"
