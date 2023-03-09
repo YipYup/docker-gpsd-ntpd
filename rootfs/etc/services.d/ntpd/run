@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bash
 #shellcheck shell=bash disable=SC2016
-
+###############################################################################
 # Documentation: https://linux.die.net/man/8/ntpd
 #
 #ENVIRONMENT
@@ -11,6 +11,7 @@
 #     /etc/ntp.drift  the default name of the drift file
 #     /etc/ntp.keys   the default name of the key file
 #
+###############################################################################
 sleep 10
 exec /usr/sbin/ntpd \
 -c /etc/ntp.conf \

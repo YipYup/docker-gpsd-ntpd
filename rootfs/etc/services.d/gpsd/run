@@ -1,8 +1,8 @@
 #!/usr/bin/with-contenv bash
 #shellcheck shell=bash disable=SC2016
-
+###############################################################################
 # Documentation at https://gpsd.gitlab.io/gpsd/gpsd.html
-
+###############################################################################
 EXEC_CMD="/usr/sbin/gpsd"
 GPS_DEVICE="${GPS_DEVICE}"
 
