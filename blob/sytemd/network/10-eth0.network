@@ -4,8 +4,16 @@ Name=*
 [Network]
 DHCP=yes
 
+###############################################################################
+# Do not allow the DHCP client to apply any NTP servers received from a DHCP
+# server via DHCP option 42 over DHCPv4 (DHCP for IPv4).
+
 [DHCPv4]
 UseNTP=no
+
+###############################################################################
+# Do not allow the DHCP client to apply any NTP servers received from a DHCP
+# server via DHCP option 42 over DHCPv6 (DHCP for IPv6).
 
 [DHCPv6]
 UseNTP=no
