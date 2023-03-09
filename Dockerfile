@@ -41,6 +41,7 @@ RUN set -x && \
     KEPT_PACKAGES+=(screen) && \
     KEPT_PACKAGES+=(telnet) && \
     KEPT_PACKAGES+=(tzdata) && \
+    KEPT_PACKAGES+=(vim) && \
     ## Builder fixes...
     mkdir -p /usr/sbin/ && \
     ln -s /usr/bin/dpkg-split /usr/sbin/dpkg-split && \
