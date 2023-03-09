@@ -6,5 +6,4 @@ enable=add-default-case
 enable=avoid-nullary-conditions
 enable=check-unassigned-uppercase
 enable=require-variable-braces
-enable=require-variable-braces
 external-sources=true
