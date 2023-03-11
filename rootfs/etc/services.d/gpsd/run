@@ -24,5 +24,4 @@ echo "[$(date)][gpsd] Starting: ${gpsd_cmd}"
 #    stdbuf -oL awk '{print "[" strftime("%Y/%m/%d %H:%M:%S", systime()) "][gpsd] " $0}'
 
 ${gpsd_cmd} -- 2>&1 | \
-    stdbuf -oL grep -v 'gpsd:WARN: cycle-start detector failed.' | \
-    stdbuf -oL awk '!/gpsd\SWARN\S\scycle\S\start\sdetector\sfailed/ {print "[" strftime("%Y/%m/%d %H:%M:%S", systime()) "][gpsd] " $0}'
+stdbuf -oL awk '!/gpsd\SWARN\S\scycle\S\start\sdetector\sfailed/ {print "[" strftime("%Y/%m/%d %H:%M:%S", systime()) "][gpsd] " $0}'
