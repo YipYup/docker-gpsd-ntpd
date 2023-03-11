@@ -3,6 +3,8 @@ FROM debian:bullseye-20230208-slim
 ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
     S6OVERLAY_VERSION=v2.2.0.3
 
+ENV TZ="${TZ}"
+
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3008,SC2086
