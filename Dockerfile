@@ -36,12 +36,10 @@ RUN set -x && \
     KEPT_PACKAGES+=(htop) && \
     KEPT_PACKAGES+=(man) && \
     KEPT_PACKAGES+=(ntp) && \
-    #KEPT_PACKAGES+=(ntp-utils) && \
     KEPT_PACKAGES+=(ntpdate) && \
     KEPT_PACKAGES+=(screen) && \
     KEPT_PACKAGES+=(telnet) && \
     KEPT_PACKAGES+=(tzdata) && \
-    KEPT_PACKAGES+=(vi) && \
     KEPT_PACKAGES+=(vim) && \
     ## Builder fixes...
     mkdir -p /usr/sbin/ && \
