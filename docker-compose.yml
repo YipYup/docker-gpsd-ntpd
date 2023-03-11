@@ -18,6 +18,7 @@ services:
     restart: always
     environment:
       - GPS_DEVICE=${GPS_DEVICE}
+      - TZ=${TZ}
     entrypoint:
     - /bin/bash
     - -c
