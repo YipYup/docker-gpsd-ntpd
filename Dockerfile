@@ -78,7 +78,7 @@ ADD https://raw.githubusercontent.com/sdr-enthusiasts/Buster-Docker-Fixes/main/0
 COPY --chown=root:root ./rootfs/ /
 # Expose ntp port udp://123
 #   - commented out while causing issues
-# EXPOSE 123/udp
+EXPOSE 123/udp
 # Expose gpsd port tcp://2947
 EXPOSE 2947/tcp
 # Launch init (s6-overlay) when starting container
