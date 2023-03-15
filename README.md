@@ -48,7 +48,7 @@ This message can be ignored, as it is non-fatal. NTPd will fallback and instead 
 
 #### GPS Modules
 
-- Better: [SparkFun U-Blox NEO-M9N Breakout Board with USB-C and SMA Connector](https://www.sparkfun.com/products/17285) and [GPS GNSS Antenna with SMA Connector](https://www.amazon.com/dp/B083D59N55?tag=radardetec0b5-20)
+- Better: [SparkFun U-Blox Neo-M9N GPS/GNSS Receiver](https://www.sparkfun.com/products/17285) and [GPS/GNSS Antenna with SMA](https://www.amazon.com/dp/B083D59N55?tag=radardetec0b5-20)
 - Good: Generic [u-Blox 7 USB GNSS GPS receiver (VK-162)](https://www.amazon.com/dp/B078Y52FGQ?tag=radardetec0b5-20)
 
 ---
