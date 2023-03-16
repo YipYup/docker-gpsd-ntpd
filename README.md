@@ -44,6 +44,19 @@ This message can be ignored, as it is non-fatal. NTPd will fallback and instead 
 
 ---
 
+#### Notice to users of Cisco Meraki networking gear
+
+Cisco Meraki switches can be knocked offline when activating an NTP server that is connected to the network. The reason is due to a poor default implementation on their part of the DHCP client. Due to the nature of their model of using a Cloud Controller for configuration of their devices, their networking gear attempt is programmed in a way that continuously attempts to act as a DHCP client for each and every network seen and known by the device. This applies to all VLANs and subnets the device sees and passively discovers as traffic traverses the equipment. An unfortunate aspect of this is that their networking gear will attempt to apply any newly seen NTP servers as a "drop in" configuration in the DHCP client returned options... meaning if the device doesn't explicitly receive DHCP Option 42 configuration containing a valid NTP server, then the device will configure itself with an NTP server that it has passively discovered over the network. When the device changes timesources to use the passively discovered NTP source as a drop in for an NTP server that is not present in the DHCP server's response, the offset on the new time source can cause the Cisco Meraki device to panic and go offline, fully shutting down the network until the NTP server is removed from the network and the device no longer can contact it.
+
+This behavior can be controlled and prevented by explicitly defining DHCP Option 42 on all of your DHCP Scope'd network configurations. I recommend setting DHCP Option 42 field to `216.239.35.0, 216.239.35.4, 216.239.35.8, 216.239.35.12` which will provide four redundant Stratum 1 NTP sources from Google's Attomic-Clock time servers, presented via AnyCast routing.
+
+Remember to define DHCP Option 42 for every DHCP Scope which traverses the Cisco Meraki equipment, otherwise the Cisco Meraki device may see a DHCP response with a missing Option 42 and attempt to prepend the missing value with the NTP server it has passively discovered, leading to the offset time and causing the device to panic and go offline.
+
+Further reading on the Cisco Meraki issue with NTP servers on a network while DHCP Option 42 is undefined:
+https://support.neat.no/article/meraki-and-ntp-issues-with-neat-firmware/
+
+---
+
 ### Recommended Hardware
 
 #### GPS Modules
