@@ -6,6 +6,10 @@ GPSd and NTPd inside of a docker container
 
 ## Information:
 
+### NO WARRANTY
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS". See the [LICENSE](LICENSE.md) file for details.
+
 ### Supported architectures
 
 This container should build successfully on `amd64`, `armhf`, and `aarch64`.
