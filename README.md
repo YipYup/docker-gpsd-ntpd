@@ -88,11 +88,13 @@ https://support.neat.no/article/meraki-and-ntp-issues-with-neat-firmware/
 - [Official NTPd Manual Documentation](https://linux.die.net/man/8/ntpd)
 - [NTPd example config for GPSd](https://wiki.archlinux.org/title/Network_Time_Protocol_daemon)
 - [NTPd Internal Drivers](https://www.eecis.udel.edu/~mills/ntp/html/drivers/driver46.html)
+- [NTPd reference clock driver syntax explained](https://www.eecis.udel.edu/~mills/ntp/html/refclock.html)
 - https://www.berthon.eu/2017/a-time-server-in-a-container-part-1/
 - https://www.lammertbies.nl/comm/info/gps-time
 - https://openwrt.org/docs/guide-user/services/ntp/gps
 - https://www.berthon.eu/2017/a-time-server-in-a-container-part-1/
 - https://kb.meinbergglobal.com/kb/time_sync/ntp/start
+
 
 #### GPSd:
 - [GPSd Documentation](https://gpsd.gitlab.io/gpsd/gpsd.html)
