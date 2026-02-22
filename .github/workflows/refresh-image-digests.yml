@@ -25,6 +25,7 @@ jobs:
             "koalaman/shellcheck:v0.9.0"
             "mvdan/shfmt:v3.6.5"
             "aquasecurity/trivy:0.44.1"
+            "hadolint/hadolint:v2.12.0"
           )
 
           echo "Checking images: ${images[*]}"
@@ -53,10 +54,8 @@ jobs:
             image_digest="${repo}@${digest}"
 
             if grep -q "$image_tag" "$tmpfile"; then
-              # insert a comment above the first occurrence and replace all occurrences
-              # avoid duplicate comments
+              # replace tag with digest and add comment above first occurrence
               if ! grep -q "# ${repo} ${tag} digest: ${digest}" "$tmpfile"; then
-                # replace occurrences and add comment before first occurrence
                 awk -v imgtag="$image_tag" -v imagedigest="$image_digest" -v comment="# ${repo} ${tag} digest: ${digest}" '
                 {
                   if (index($0, imgtag)) {
@@ -66,8 +65,26 @@ jobs:
                   } else { print }
                 }' "$tmpfile" > "${tmpfile}.new" && mv "${tmpfile}.new" "$tmpfile"
               else
-                # just replace
                 sed -E -i "s#${image_tag}#${image_digest}#g" "$tmpfile"
+              fi
+              changed=1
+            elif grep -q "${repo}@sha256:" "$tmpfile"; then
+              # If repo is already pinned by digest, update the digest and the human-friendly comment
+              # replace any existing repo@sha256:... with the new digest
+              sed -E -i "s#${repo}@sha256:[a-f0-9]+#${image_digest}#g" "$tmpfile" || true
+              # update or insert comment above the digest line
+              if grep -q "# ${repo} ${tag} digest: " "$tmpfile"; then
+                # replace existing comment line for this repo
+                sed -E -i "s#^# ${repo} ${tag} digest: .*#${repo} ${tag} digest: ${digest}#g" "$tmpfile" || true
+              else
+                # insert comment before first occurrence of repo@sha256
+                awk -v imagedigest="$image_digest" -v comment="# ${repo} ${tag} digest: ${digest}" '
+                {
+                  if (index($0, imagedigest)) {
+                    if (!done) { print comment; done=1 }
+                    print;
+                  } else { print }
+                }' "$tmpfile" > "${tmpfile}.new" && mv "${tmpfile}.new" "$tmpfile"
               fi
               changed=1
             else
