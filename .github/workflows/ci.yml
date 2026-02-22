@@ -16,20 +16,17 @@ jobs:
         with:
           dockerfile: Dockerfile
 
-      - name: Install shellcheck and shfmt
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y shellcheck
-          curl -sSL -o shfmt https://github.com/mvdan/sh/releases/download/v3.6.5/shfmt_v3.6.5_linux_amd64
-          chmod +x shfmt && sudo mv shfmt /usr/local/bin/
-
       - name: Run shellcheck on service scripts
-        run: |
-          find rootfs -type f -name run -print0 | xargs -0 shellcheck -x || true
+        uses: koalaman/shellcheck-action@v1
+        with:
+          files: |
+            rootfs/**/run
+          extra_args: -x
 
       - name: Check shell formatting with shfmt
-        run: |
-          shfmt -l rootfs || (echo "shfmt formatting issues found" && exit 1)
+        uses: mvdan/sh-action@v1
+        with:
+          args: -l rootfs
 
   build:
     runs-on: ubuntu-latest
