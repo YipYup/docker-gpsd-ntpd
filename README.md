@@ -20,9 +20,38 @@ order to be a time provider for ntpd.
 
 ### Running:
 
-Use the docker-compose.yml as standalone or copy the contents into an existing docker-compose.yml file. Be sure to make any adjustments necessary for your enviornment such as adjusting the network configuration, hostname, etc. and etc.
+Use the docker-compose.yml as standalone or copy the contents into an existing docker-compose.yml file. Be sure to make any adjustments necessary for your environment such as adjusting the network configuration, hostname, etc.
 
 Be sure to edit the `.env` file to set the device parameter to the correct device name for the GPS receiver you are using. An example is provided in `.env.example`.
+
+Device setup
+------------
+You must map your GPS device into the container by setting `GPS_DEVICE` in your `.env` (for example `GPS_DEVICE=/dev/ttyUSB0`). The compose example in this repository expects the host device path to be identical inside the container.
+
+How to find your device name
+- Plug the GPS USB device into the host and then run one of these commands to identify the assigned device node:
+
+```bash
+# preferred (human readable) listing of serial devices
+ls -l /dev/serial/by-id || true
+
+# fallback common device paths
+ls -l /dev/ttyUSB* /dev/ttyACM* /dev/ttyAMA* 2>/dev/null || true
+
+# kernel messages after plugging in (shows device assignment)
+dmesg | tail -n 20
+```
+
+If your device provides PPS, there may be a `/dev/pps0` entry; confirm with:
+
+```bash
+ls -l /dev/pps* 2>/dev/null || true
+```
+
+Tips
+- If nothing appears after plugging the device, run `udevadm monitor --udev` while plugging it in to watch udev events.
+- On some systems the device path in `/dev/serial/by-id` is a stable name you should prefer.
+- Update your `.env` with the discovered device path, e.g. `GPS_DEVICE=/dev/ttyUSB0`.
 
 ### Notes
 
