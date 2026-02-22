@@ -13,7 +13,7 @@ jobs:
 
       - name: Hadolint Dockerfile (run via container)
         run: |
-          docker run --rm -v "${{ github.workspace }}:/data" -w /data hadolint/hadolint:latest hadolint Dockerfile || true
+          docker run --rm -v "${{ github.workspace }}:/data" -w /data hadolint/hadolint:v2.12.0 hadolint Dockerfile || true
 
       - name: Run shellcheck on service scripts
         uses: koalaman/shellcheck-action@v1
