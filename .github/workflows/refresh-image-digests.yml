@@ -1,0 +1,98 @@
+name: Refresh image digests
+
+on:
+  schedule:
+    - cron: '0 3 * * 1' # weekly on Monday at 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Refresh image digests and open PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          FILE: .github/workflows/ci.yml
+        run: |
+          set -euo pipefail
+          images=(
+            "koalaman/shellcheck:v0.9.0"
+            "mvdan/shfmt:v3.6.5"
+            "aquasecurity/trivy:0.44.1"
+          )
+
+          echo "Checking images: ${images[*]}"
+
+          tmpfile=$(mktemp)
+          cp "$FILE" "$tmpfile"
+
+          changed=0
+          for img in "${images[@]}"; do
+            repo=$(echo "$img" | cut -d: -f1)
+            tag=$(echo "$img" | cut -d: -f2-)
+            echo "Resolving digest for $repo:$tag"
+            token=$(curl -s "https://auth.docker.io/token?service=registry.docker.io&scope=repository:${repo}:pull" | jq -r .token)
+            if [[ -z "$token" || "$token" == "null" ]]; then
+              echo "Failed to get token for $repo"
+              continue
+            fi
+            digest=$(curl -sI -H "Authorization: Bearer $token" -H "Accept: application/vnd.docker.distribution.manifest.v2+json, application/vnd.docker.distribution.manifest.list.v2+json" "https://registry-1.docker.io/v2/${repo}/manifests/${tag}" | awk -F': ' '/Docker-Content-Digest/ {print $2}' | tr -d '\r')
+            if [[ -z "$digest" ]]; then
+              echo "No digest for $repo:$tag"
+              continue
+            fi
+            echo "Found digest $digest for $repo:$tag"
+
+            image_tag="${repo}:${tag}"
+            image_digest="${repo}@${digest}"
+
+            if grep -q "$image_tag" "$tmpfile"; then
+              # insert a comment above the first occurrence and replace all occurrences
+              # avoid duplicate comments
+              if ! grep -q "# ${repo} ${tag} digest: ${digest}" "$tmpfile"; then
+                # replace occurrences and add comment before first occurrence
+                awk -v imgtag="$image_tag" -v imagedigest="$image_digest" -v comment="# ${repo} ${tag} digest: ${digest}" '
+                {
+                  if (index($0, imgtag)) {
+                    if (!done) { print comment; done=1 }
+                    gsub(imgtag, imagedigest);
+                    print;
+                  } else { print }
+                }' "$tmpfile" > "${tmpfile}.new" && mv "${tmpfile}.new" "$tmpfile"
+              else
+                # just replace
+                sed -E -i "s#${image_tag}#${image_digest}#g" "$tmpfile"
+              fi
+              changed=1
+            else
+              echo "$image_tag not present in $FILE"
+            fi
+          done
+
+          if [[ $changed -eq 1 ]]; then
+            branch="chore/update-image-digests-$(date +%Y%m%d%H%M%S)"
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git checkout -b "$branch"
+            mv "$tmpfile" "$FILE"
+            git add "$FILE"
+            git commit -m "chore(ci): update image digests"
+            git push --set-upstream "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git" "$branch"
+
+            # create PR via API
+            pr_title="chore(ci): update image digests"
+            pr_body="This PR updates pinned container image digests for CI tooling."
+            json=$(jq -n --arg t "$pr_title" --arg b "$pr_body" --arg head "$branch" --arg base "main" '{title: $t, body: $b, head: $head, base: $base}')
+            curl -s -H "Authorization: Bearer ${GITHUB_TOKEN}" -H "Content-Type: application/json" -d "$json" "https://api.github.com/repos/${REPO}/pulls" || true
+            echo "Created PR for $branch"
+          else
+            echo "No changes needed"
+          fi
+
+          rm -f "$tmpfile"
