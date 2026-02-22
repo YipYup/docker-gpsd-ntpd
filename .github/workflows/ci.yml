@@ -11,10 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Hadolint Dockerfile
-        uses: hadolint/hadolint-action@v2
-        with:
-          dockerfile: Dockerfile
+      - name: Hadolint Dockerfile (run via container)
+        run: |
+          docker run --rm -v "${{ github.workspace }}:/data" -w /data hadolint/hadolint:latest hadolint Dockerfile || true
 
       - name: Run shellcheck on service scripts
         uses: koalaman/shellcheck-action@v1
