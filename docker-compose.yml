@@ -8,7 +8,16 @@ services:
     container_name: gpsdntpd
     hostname: gpsdntpd
     tty: true
-    privileged: true
+    # Prefer minimal capabilities and explicit device mappings instead of
+    # running the container fully privileged. Users should set GPS_DEVICE in
+    # their .env to the host device path (e.g. /dev/ttyUSB0). The PPS device
+    # may be present as /dev/pps0 on some systems.
+    cap_add:
+      - SYS_TIME
+      - NET_BIND_SERVICE
+    devices:
+      - ${GPS_DEVICE}:${GPS_DEVICE}:rwm
+      - /dev/pps0:/dev/pps0:rwm
     build:
       context: .
       dockerfile: Dockerfile
