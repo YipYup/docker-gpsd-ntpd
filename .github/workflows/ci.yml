@@ -16,17 +16,15 @@ jobs:
           # hadolint v2.12.0 digest: sha256:30a8fd2e785ab6176eed53f74769e04f125afb2f74a6c52aef7d463583b6d45e
           docker run --rm -v "${{ github.workspace }}:/data" -w /data hadolint/hadolint@sha256:30a8fd2e785ab6176eed53f74769e04f125afb2f74a6c52aef7d463583b6d45e hadolint Dockerfile || true
 
-      - name: Run shellcheck on service scripts
-        uses: koalaman/shellcheck-action@v1
-        with:
-          files: |
-            rootfs/**/run
-          extra_args: -x
+      - name: Run shellcheck (docker image)
+        run: |
+          # koalaman/shellcheck:v0.9.0 -- pinned image
+          docker run --rm -v "${{ github.workspace }}:/src" -w /src koalaman/shellcheck:v0.9.0 shellcheck -x /src/rootfs/**/run || true
 
-      - name: Check shell formatting with shfmt
-        uses: mvdan/sh-action@v1
-        with:
-          args: -l rootfs
+      - name: Check shell formatting with shfmt (docker image)
+        run: |
+          # mvdan/shfmt:v3.6.5 -- pinned image
+          docker run --rm -v "${{ github.workspace }}:/src" -w /src mvdan/shfmt:v3.6.5 shfmt -l /src/rootfs || (echo "shfmt formatting issues found" && exit 1)
 
   build:
     runs-on: ubuntu-latest
