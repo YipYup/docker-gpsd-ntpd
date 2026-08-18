@@ -1,3 +1,5 @@
+
+
 # docker-gpsd-ntpd
 
 GPSd and NTPd inside of a docker container
@@ -34,7 +36,7 @@ configured to use multiple interface types to the various GPSd devices. Since GP
 normal and expected that you may see warning and informational messages from the container, complaining that a device wasn't found or
 that a protocol isn't supported on a given device.
 
-For example, the output of `docker logs gpsd` shows this line repeated over and over.
+For example, the output of `docker logs gpsdntpd` shows this line repeated over and over.
 
 ```
 [gpsd] gpsd:WARN: cycle-start detector failed.
